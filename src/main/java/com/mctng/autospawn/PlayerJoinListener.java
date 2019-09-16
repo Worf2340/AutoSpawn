@@ -18,7 +18,10 @@ public class PlayerJoinListener implements Listener {
         int x = plugin.getConfig().getInt("spawn.x");
         int y = plugin.getConfig().getInt("spawn.y");
         int z = plugin.getConfig().getInt("spawn.z");
+        float pitch = (float) plugin.getConfig().getDouble("spawn.pitch");
+        float yaw = (float) plugin.getConfig().getDouble("spawn.yaw");
 
-        event.getPlayer().teleport(new Location(event.getPlayer().getWorld(), x, y, z ));
+        event.getPlayer().teleport(new Location(event.getPlayer().getWorld(), x, y, z, yaw, pitch));
+        event.getPlayer().performCommand("gui");
     }
 }

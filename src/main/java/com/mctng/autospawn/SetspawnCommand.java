@@ -19,6 +19,8 @@ public class SetspawnCommand implements CommandExecutor {
         int x;
         int y;
         int z;
+        float pitch;
+        float yaw;
 
         if (args.length == 0) {
             if (sender instanceof Player){
@@ -26,6 +28,8 @@ public class SetspawnCommand implements CommandExecutor {
                 x = location.getBlockX();
                 y = location.getBlockY();
                 z = location.getBlockZ();
+                pitch = location.getPitch();
+                yaw = location.getYaw();
             }
             else {
                 sender.sendMessage(ChatColor.RED + "This command must be sent by a player to be used with no arguments.");
@@ -37,6 +41,8 @@ public class SetspawnCommand implements CommandExecutor {
                 x = Integer.parseInt(args[0]);
                 y = Integer.parseInt(args[1]);
                 z = Integer.parseInt(args[2]);
+                pitch = 0;
+                yaw = 0;
             }
             catch (NumberFormatException e) {
                 sender.sendMessage(ChatColor.RED + "Invalid coordinates!");
@@ -53,6 +59,10 @@ public class SetspawnCommand implements CommandExecutor {
         plugin.getConfig().set("spawn.x", x);
         plugin.getConfig().set("spawn.y", y);
         plugin.getConfig().set("spawn.z", z);
+        plugin.getConfig().set("spawn.pitch", pitch);
+        plugin.getConfig().set("spawn.yaw", yaw);
+
+        plugin.saveConfig();
 
         return true;
     }
