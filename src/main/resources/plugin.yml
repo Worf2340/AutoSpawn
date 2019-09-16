@@ -1,0 +1,12 @@
+name: AutoSpawn
+version: ${project.version}
+main: com.mctng.autospawn.AutoSpawn
+api-version: 1.13
+authors: [Worf2340]
+description: Automatically do stuff when the player joins the world.
+
+commands:
+  setspawn:
+    description: Set spawn
+    usage: /setspawn [<x> <y> <z>]
+    permission: autospawn.setspawn
